@@ -11,7 +11,7 @@ but getting it right is a little noodly. the trick is to let the cloud_sql_proxy
 
 this script is a utility that's intended to be used with some adaptation by database maintenance scripts, but could also be used by humans. 
 
-```
+{% highlight bash %}
 # i recommend that you use Google Secret Manager or whatever password CLI tool you have to set these variables
 # to the output of a secrets manager query to keep that ish out of a repo.
 
@@ -38,4 +38,4 @@ mysql -u ${db_user} -p${db_pass} --host 127.0.0.1 --port 3308 -e "show databases
 # the -p option in xargs allows for a confirmation from you. remove that argument if you trust the robots; i typically don't.
 
 ps -ef | grep cloud_sql_proxy | head -1 | awk '{print $2}' | xargs -p kill
-```
+{% endhighlight %}
