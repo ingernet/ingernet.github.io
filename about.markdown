@@ -28,8 +28,3 @@ lots of random bits of code that took me entirely too long to figure out. sticki
 - [AC:NH](https://www.reddit.com/r/AnimalCrossingNewHor/)
 - [voting](https://vote.gov/)
 - [kindness](https://acts.kindness.org/initiatives)
-
-
-### also, i'm here:
-- [LinkedIn]({{ site.linkedin }})
-- [Stack Overflow]({{ site.stacko }})

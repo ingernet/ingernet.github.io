@@ -20,15 +20,16 @@
 
 title: code doodles
 email: ingernet@gmail.com
-linkedin: https://www.linkedin.com/in/ingernet/
-stacko: https://stackoverflow.com/users/2005095/ingernet
 description: >- # this means to ignore newlines until "baseurl:"
   basically a bunch of code snippets with descriptions like "look what i stepped in."
   my hope is that only one of us should have to learn these things the hard way.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
+social_links: true
+stackoverflow_username: ingernet
 twitter_username: ingernet
 github_username:  ingernet
+linkedin_username: ingernet
 
 # Build settings
 theme: minima
