@@ -2,7 +2,7 @@
 layout: page
 title: "Converting a JSON array to a bash array"
 date:   2020-04-15 20:00:00 -0700
-categories: bash jq
+categories: bash jq json
 ---
 
 Bash is the most common language of DevOps because you can guarantee that it's installed on a server. 
