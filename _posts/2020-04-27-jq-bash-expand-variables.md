@@ -51,13 +51,19 @@ Let's see if it runs, I guess?
 
 {% highlight bash %}
 $ echo $jqstring
-'.bindings[] | select(.members[] | contains("ingernet@personalaccount.com")) | .role'  # i mean, i'll try it? hold my beer
+'.bindings[] | select(.members[] | contains("ingernet@personalaccount.com")) | .role'  
 
-$ gcloud projects get-iam-policy my-fancy-project --format=json | jq $jqstring
-jq: error: syntax error, unexpected INVALID_CHARACTER, expecting $end (Unix shell quoting issues?) at <top-level>, line 1:
-'.bindings[]                 # wheeeeeeee
 {% endhighlight %}
 
+I mean, I'll try it? Hold my beer
+
+{% highlight bash %}
+$ gcloud projects get-iam-policy my-fancy-project --format=json | jq $jqstring
+jq: error: syntax error, unexpected INVALID_CHARACTER, expecting $end (Unix shell quoting issues?) at <top-level>, line 1:
+'.bindings[]                 
+{% endhighlight %}
+
+_wheeeeeeee_
 
 Well, dear reader, listen close: I was definitely overthinking things. Here's how you do it:
 
