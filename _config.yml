@@ -18,8 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: inger klekacz's code doodles
+title: code doodles
 email: ingernet@gmail.com
+linkedin: https://www.linkedin.com/in/ingernet/
+stacko: https://stackoverflow.com/users/2005095/ingernet
 description: >- # this means to ignore newlines until "baseurl:"
   basically a bunch of code snippets with descriptions like "look what i stepped in."
   my hope is that only one of us should have to learn these things the hard way.

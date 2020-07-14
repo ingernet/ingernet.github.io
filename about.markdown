@@ -13,7 +13,7 @@ i'm a devops engineer based out of Oregon and working in the GCP and AWS IaaS sp
 
 ### what's here?
 
-lots of random bits of code that took me entirely too long to figure out. sticking it here rather than in gists with the hope that somebody googles the same error messages i got and learns from my mistakes.
+lots of random bits of code that took me entirely too long to figure out. sticking it here rather than in gists, with the hope that somebody googles the same error messages i got and learns from my mistakes.
 
 
 ### here are some things i'm into:
@@ -28,3 +28,8 @@ lots of random bits of code that took me entirely too long to figure out. sticki
 - [AC:NH](https://www.reddit.com/r/AnimalCrossingNewHor/)
 - [voting](https://vote.gov/)
 - [kindness](https://acts.kindness.org/initiatives)
+
+
+### also, i'm here:
+- [LinkedIn]({{ site.linkedin }})
+- [Stack Overflow]({{ site.stacko }})
