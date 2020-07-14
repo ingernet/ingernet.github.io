@@ -2,7 +2,7 @@
 layout: post
 title:  "Running GCP cloud_sql_proxy as a Service"
 date:   2020-06-23 13:27:00 -0700
-categories: gcp bash
+categories: bash gcp
 ---
 
 setting cloud_sql_proxy up to run in the background for automated db work is deceptively simple...
