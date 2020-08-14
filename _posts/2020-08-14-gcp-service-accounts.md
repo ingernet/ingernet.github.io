@@ -128,8 +128,8 @@ my-fancy-cluster-type  deploymentmanager.v2beta.typeProvider  COMPLETED
 ```
 
 ## Related Links ##
-- https://cloud.google.com/iam/docs/creating-managing-service-accounts
-- https://cloud.google.com/iam/docs/creating-managing-service-account-keys
-- https://cloud.google.com/sdk/gcloud/reference/auth/activate-service-account
-- https://cloud.google.com/iam/docs/granting-changing-revoking-access#updating-gcloud
-- https://cloud.google.com/iam/docs/reference/rest/v1/Policy#Binding
+- [GCP: Managing Service Accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
+- [GCP: Managing Service Account Keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
+- [GCP: Activating a Service Account](https://cloud.google.com/sdk/gcloud/reference/auth/activate-service-account)
+- [GCP: Assigning a Project Role to a Service Account](https://cloud.google.com/iam/docs/granting-changing-revoking-access#updating-gcloud)
+- [GCP: IAM Member Types](https://cloud.google.com/iam/docs/reference/rest/v1/Policy#Binding)
