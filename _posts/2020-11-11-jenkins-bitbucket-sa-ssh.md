@@ -1,11 +1,11 @@
 ---
-layout: default
+layout: page
 title: "Access Bitbucket repos from Jenkins with a GCP Service Account"
 date:   2020-11-11 17:20:00 -0700
 categories: gcp iam sa
 ---
 
-This process always feels a little noodly to me, so I thought I'd write it down just in case.
+This process always feels a little noodly to me, with resources scattered all over the place, so I thought I'd write it down in one place, just in case.
 
 ## TL;DR ##
 
@@ -25,7 +25,7 @@ The company I was at was migrating a bunch of assets from a few different places
 
 ## The problem ##
 
-How do I set up a service account (SA) and give it access to my private repo? The person who did this work before me basically muttered, "Phew, so THAT happened," and wandered off into the desert to go find his center again.
+How do I set up a service account (SA) and give it access to my private repo? Rather than documenting their work, the person who did this work before me basically muttered, "Phew, so THAT happened," and wandered off into the desert to go find their center again.
 
 Now, y'all might be making fun of me for not being super clear on how to enable a service account with Bitbucket perms, but can I  just say? I had just finished upgrading the Jenkins instance itself (we were 14 minor versions behind), deleting 24 unused plugins, doing security updates on 20 more, and reconfiguring pipelines affected by breaking changes. I basically came out of the dark maw of that cave like every Jenkins admin does:
 
@@ -119,21 +119,25 @@ This pipeline's only job is to clone the repo to Jenkins and prove to you that i
 
 1. Navigate back up to the top level of your Jenkins website.
 2. In the left nav, click **New Item**
-3. Call it "Test-ServiceAccount-Bitbucket" and choose "Pipeline" for its type.
-4. Put something useful in the **Description** field for the next person who has to cleanup old pipelines.
-5. In the *Pipeline* section:
-    - Definition: choose "Pipeline script from SCM"
-    - SCM: choose "Git"
+3. Call it "Test-ServiceAccount-Bitbucket" and choose "Freestyle Pipeline" for its type.
+4. Put something useful in the **Description** field for the next person who has to cleanup old pipelines, in the event that you are sloppy and don't clean up after yourself after this test.
+5. In the *Source Code Management* section:
+    - Click the radio button for "Git." If you don't have that button, you don't have the Git plugin installed on your system, and you're in a world of pain bigger than I can deal with in this doc. Go install the plugin and come back.
     - Magically appearing *Repositories* subsection:
         - Repository URL: the URL you would use to clone the repo <u>with SSH</u>, e.g. ssh://bitbucket.org/my-organization/my-repo-name.git
+        **Note:** this may initially throw a red error if it's a private repo, because you haven't selected a set of Credentials to use. Keep calm and carry on.
         - Credentials: this is where your hard work pays off! Choose the key you just created - it'll show up as the string you provided in step 6 of the last section.
-6. FOR THE LOVE OF GOD, THE BUILD SECTION IS MISSING AFTER THE UPGRADE
+    - *Branches to Build* subsection:
+      - "Branch Specifier" should default to *master*, and this is fine for now, since you're just seeing if you can see it at all. The caveat here being that if you have [changed all your main branches to be named "main" instead of "master,"](https://www.vice.com/en/article/k7qbyv/github-to-remove-masterslave-terminology-from-its-platform) use that.
+6. In the *Build* section:
+   - In the *Add build step* drop down menu, choose "Execute shell." A *Command* textarea field will appear.
+   - *Command:* Just type `ls` in this field. We just want to prove that we cloned the repo.
+7. Save your changes at the bottom.
+8. Back in the project overview window, in the left nav, click "Build Now."
+9. Click on the Build number that starts showing a progress bar in the left nav, then click the "Console Output" link to see what's going on in the pipeline you just wrote.
+10. Enjoy the output of the `ls` command you told it to run.
 
-
-# (┛ಠ_ಠ)┛彡┻━┻ #
-
-I am going to go ahead and commit all of these repo changes and put this article away for the night and not at all be furious at fucking jenkins
-
+Congrats!
 
 
 ## Related Links ##
