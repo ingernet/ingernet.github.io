@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/ingernet.css">
+    <title>{{ page.title }}</title>
+  </head>
+  <body>
+    {% include navigation.html %}
+
+    <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+    <article class="post">
+    <h1 class="post-title">{{ page.title }}</h1>
+    {{ content }}
+    </article>
+    </div>
+    </main>
+  </body>
+</html>
