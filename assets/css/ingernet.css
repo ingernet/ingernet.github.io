@@ -1,1 +1,20 @@
 figcaption { font-size: 14px; font-style: italic; margin-bottom: 3em; }
+@media screen and (max-width: 1000px) {
+    p, ol li, ul li {
+     /* p { */
+        font-size: 30px;
+    }
+    code {
+        font-size: 25px;
+    }
+    h2 {
+        font-size: 38px;
+    }
+}
+
+p.centered, figcaption.centered {
+    text-align: center;
+}
+p.centered {
+    margin-bottom: .2em;
+}
