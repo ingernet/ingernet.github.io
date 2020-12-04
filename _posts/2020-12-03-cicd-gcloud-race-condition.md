@@ -7,6 +7,15 @@ categories: gcp k8s cicd
 
 Ran into a fun little snag yesterday. 
 
+
+## TL;DR ##
+
+1. Using a central kubeconfig file is fine for proof of concept work, but not recommended in production deployment environments; it's much better to have one kubeconfig file per deployment pipeline
+2. kubeconfig files can be stored in version control
+3. `gcloud container clusters get-credentials` changes the context in which kubectl runs
+4. If pipeline A changes the context while pipeline B is running, you run the risk of pipeline B failing (bad) or accidentally running against a different context, i.e., the cluster used by pipeline A (bad, very bad, quite terrifying actually).
+
+## The scene ##
 So, we have this Jenkins job that builds a Java app. Upon its success, that app is immediately deployed (via two different other jobs) to two different GKE workloads in the same cluster.
 
 These workload deployment jobs have always coexisted. It has NEVER been a problem to have them run in tandem. Until yesterday.
@@ -39,7 +48,7 @@ That command does two things that we care about:
 This is fine, having a central kubeconfig file, unless you happen to have two pipelines running that get-credentials command at the same time, in case one of two bad things can happen:
 
 - bad: that centralized kubeconfig file gets munged and at least one of the jobs fails because it can't parse the YAML
-- REALLY bad: two jobs pull credentials for _different clusters_, and whichever of those jobs runs last ends up doing unexpected things to the _wrong cluster_
+- REALLY bad: two completely unrelated jobs pull credentials for _different clusters_, and whichever of those jobs runs last ends up doing unexpected things to the _wrong cluster_
 
 ![phew](https://media.giphy.com/media/MeFm94nKdkAOA/giphy.gif)
 <figcaption>oh no</figcaption>
