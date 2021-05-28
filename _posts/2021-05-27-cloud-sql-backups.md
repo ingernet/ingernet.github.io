@@ -6,7 +6,7 @@ categories: gcp bitbucket cicd
 ---
 
 ## TL;DR ##
-GCP has a collection of sharp edges in their Cloud SQL offering, most notably surrounding their backup processes. The workaround for this is to use your CI/CD solution to manually back up your Cloud SQL instance to a Cloud Storage bucket.
+GCP has a collection of sharp edges in their Cloud SQL offering, most notably surrounding their backup processes. The workaround for this is to use your CI/CD solution to manually back up your Cloud SQL instance's databases to a Cloud Storage bucket.
 
 
 ## What's the point of a backup? ##
@@ -18,15 +18,15 @@ The thing with backups is that you don't care about them at all until you really
 
 Well, yes, BUT. And it's a big but. And like Sir Mix-A-Lot, I also like big butts, but only with two Ts.
 
-<p class="centered"><img src="../assets/gcp-sql-big-butts.gif" width="500px" />
+<p class="centered"><img src="/assets/gcp-sql-big-butts.gif" width="500px" />
 </p><figcaption class="centered">Sir Mix-A-Lot hates big buts</figcaption>
 
 ## The big But ##
 There are several buts here, sadly none of them with two Ts:
 
 - If your instance is deleted, **its backups go with it.** :exploding_head:
-- GCP doesn't offer deletion prevention on its SQL instances. :scream:
-- GCP doesn't let you access existing backups except to delete them or restore from them. There is no way to manually download the backup files made, or transfer them to a Cloud Storage bucket. :unamused:
+- GCP **doesn't offer deletion prevention** on its SQL instances. :scream:
+- GCP doesn't let you access existing backups except to delete them or restore from them. There is no way to manually download the backup files made, or transfer them to a bucket. :unamused:
 
 Each one of these Buts has at least one Issue Tracker ticket associated with it. *The average age of these scary issues in the tracker is a little over 18 months.*<sup>[<a href="https://issuetracker.google.com/issues/171854148" target="_blank">1</a>][<a href="https://issuetracker.google.com/issues/116218535" target="_blank">2</a>][<a href="https://issuetracker.google.com/issues/141349131" target="_blank">3</a>]</sup> (Feel free to go upvote ("star") them if you feel that these remediations should be addressed.)
 
