@@ -37,9 +37,8 @@ echo $bork
 [ "260", "61a1d7aef75421f5c209c42304716ba44e86ab7a", "DEPLOYED.2019-11-12T17.04.37.772145800Z", "DEPLOYED.2019-11-13T00.00.29.525908800Z" ]
 # ^ output is obviously not a bash array
 
-# strip out all the things you don't want - square brackets and commas
-borkstring=$(echo $bork | sed -e 's/\[ //g' -e 's/\ ]//g' -e 's/\,//g')
-arr=( $borkstring )
+# strip out all the things you don't want - square brackets and commas, then wrap in an array ()
+arr=( $(echo $bork | sed -e 's/\[//g' -e 's/\]//g' -e 's/\,/ /g') )
 echo $arr
 ( "260" "61a1d7aef75421f5c209c42304716ba44e86ab7a" "DEPLOYED.2019-11-12T17.04.37.772145800Z" "DEPLOYED.2019-11-13T00.00.29.525908800Z" )
 # ^ now THAT is a bash array
